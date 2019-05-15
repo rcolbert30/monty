@@ -1,5 +1,14 @@
-#ifndef "MONTY_H"
-#define "MONTY_H"
+#ifndef _MONTY_H
+#define _MONTY_H
+#include <unistd.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,4 +58,24 @@ extern general_t *gen;
 
 /** helper functions */
 size_t print_stack(const stack_t *h);
+char *tokop_init(char *tok, int tok_abs);
+char *read_it(int fd);
+int nl_count(char *tok);
+
+/**execute functions */
+int exe(char *input, stack_t **stack);
+
+/**free functions*/
+void free_exit(stack_t *stack, unsigned int lnum, char *mssg);
+void free_exit_2(stack_t *stack, unsigned int lnum, char *mssg);
+void free_stack(stack_t *head);
+
+/**opcode functions*/
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 #endif
