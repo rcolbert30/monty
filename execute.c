@@ -22,8 +22,6 @@ int exe(char *input, stack_t **stack)
 	{
 		for (i = 0; tok[i] == ' '; i++)
 			;
-		if (comment_check(&lnum, i, &tok))
-			continue;
 		for (toklen = i; tok[toklen] && tok[toklen] != ' '; toklen++)
 			;
 		gen->token = tokop_init(tok + i, toklen - i);
